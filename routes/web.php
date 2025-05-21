@@ -45,7 +45,7 @@ Route::post('/jobs', function(){
     Job::create([
         'title'=> request('title'),
         'salary'=> request('salary'),
-        'employer_id'=>'',
+        'employer_id'=>'1',
     ]);
     return redirect('/jobs');
 });
