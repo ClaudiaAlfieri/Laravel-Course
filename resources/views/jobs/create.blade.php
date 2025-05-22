@@ -18,6 +18,10 @@
                                     class="block min-w-0 grow py-1.5 px-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                                     placeholder="Shift Leader" required>
                             </div>
+
+                            @error('title')
+                                <p class="text-xs text-red-500 font-semibold mt-1"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -30,10 +34,15 @@
                                     class="block min-w-0 grow py-1.5 px-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                                     placeholder="$50,000 Per Year">
                             </div>
+                             @error('title')
+                                <p class="text-xs text-red-500 font-semibold mt-1"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <div class="mt-10">
+
+                {{-- Validation Message --}}
+                {{-- <div class="mt-10">
                     @if ($errors->any())
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -41,7 +50,8 @@
                             @endforeach
                         </ul>
                     @endif
-                </div>
+                </div> --}}
+
             </div>
         </div>
 
