@@ -5,45 +5,58 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::view('/', 'home');
+
+// Route group
+
+Route::controller(JobController::class)->group(function(){
 
 //INDEX - Rota para mostrar todos os jobs
 
-Route::get('/jobs',[JobController::class, 'index']);
-
+// Route::get('/jobs',[JobController::class, 'index']);
+Route::get('/jobs', 'index');
 
 //CREATE - Rota para criar um novo job
 
-Route::get('/jobs/create', [JobController::class, 'create']);
+Route::get('/jobs/create',  'create');
 
 
 //SHOW -Rota para mostrar um job
 
-Route::get('/jobs/{job}', [JobController::class, 'show']);
+Route::get('/jobs/{job}',  'show');
 
 
 //STORE - Rota para guardar um novo job na DB
 
-Route::post('/jobs', [JobController::class, 'store']);
+Route::post('/jobs', 'store');
 
 
 //EDIT -Rota para editar um job
 
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+Route::get('/jobs/{job}/edit',  'edit');
 
 
 //UPDATE -Rota para salvar a edição de um job
 
-Route::patch('/jobs/{job}', [JobController::class, 'update']);
+Route::patch('/jobs/{job}',  'update');
 
 
 //DESTROY -Rota para apagar um job
 
-Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
+Route::delete('/jobs/{job}',  'destroy');
 
-
-Route::get('/contact', function () {
-    return view('contact');
 });
+
+// Route Resource - "resume todo o route group"
+// Route::resource('jobs', JobController::class);
+
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+
+Route::view('/contact', 'contact');
