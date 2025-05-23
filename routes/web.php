@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 
-//Rota para mostrar todos os jobs
+//INDEX - Rota para mostrar todos os jobs
 
 Route::get('/jobs', function () {
 
@@ -21,7 +21,7 @@ Route::get('/jobs', function () {
 });
 
 
-//Rota para mostrar a página para criar um novo job
+//CREATE - Rota para criar um novo job
 
 Route::get('/jobs/create', function(){
     return view('jobs.create');
@@ -29,15 +29,17 @@ Route::get('/jobs/create', function(){
 });
 
 
-//Rota para mostrar um job
+//SHOW -Rota para mostrar um job
 
-Route::get('/job/{id}', function ($id){
+Route::get('/jobs/{id}', function ($id){
 
     $job = Job::find($id);
 
     return view('jobs.show', ['job' => $job]);
 
 });
+
+//STORE - Rota para guardar um novo job na DB
 
 Route::post('/jobs', function(){
    request()->validate([
@@ -51,6 +53,54 @@ Route::post('/jobs', function(){
         'salary'=> request('salary'),
         'employer_id'=>'1',
     ]);
+    return redirect('/jobs');
+});
+
+//EDIT -Rota para editar um job
+
+Route::get('/jobs/{id}/edit', function ($id){
+
+    $job = Job::find($id);
+
+    return view('jobs.edit', ['job' => $job]);
+
+});
+
+//UPDATE -Rota para salvar a edição de um job
+
+Route::patch('/jobs/{id}', function ($id){
+
+    //validade
+    request()->validate([
+    'title' => ['required', 'min:3'],
+    'salary' => ['required']
+   ]);
+
+    //authorize
+
+    //update
+    $job = Job::findOrFail($id);
+
+    $job->update([
+        'title'=> request('title'),
+        'salary'=> request('salary'),
+    ]);
+
+    //redirect to the job page
+    return redirect('/jobs/' . $job->id);
+
+});
+
+//DESTROY -Rota para apagar um job
+
+Route::delete('/jobs/{id}', function ($id){
+    //authorize
+
+    //delete the job
+    $job = Job::findOrFail($id);
+    $job->delete();
+
+    //redirect
     return redirect('/jobs');
 });
 
