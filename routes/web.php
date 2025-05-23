@@ -23,81 +23,70 @@ Route::get('/jobs', function () {
 
 //CREATE - Rota para criar um novo job
 
-Route::get('/jobs/create', function(){
+Route::get('/jobs/create', function () {
     return view('jobs.create');
-
 });
 
 
 //SHOW -Rota para mostrar um job
 
-Route::get('/jobs/{id}', function ($id){
-
-    $job = Job::find($id);
+Route::get('/jobs/{job}', function (Job $job) {
 
     return view('jobs.show', ['job' => $job]);
-
 });
 
 //STORE - Rota para guardar um novo job na DB
 
-Route::post('/jobs', function(){
-   request()->validate([
-    'title' => ['required', 'min:3'],
-    'salary' => ['required']
+Route::post('/jobs', function () {
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
 
-   ]);
+    ]);
 
     Job::create([
-        'title'=> request('title'),
-        'salary'=> request('salary'),
-        'employer_id'=>'1',
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'employer_id' => '1',
     ]);
     return redirect('/jobs');
 });
 
 //EDIT -Rota para editar um job
 
-Route::get('/jobs/{id}/edit', function ($id){
-
-    $job = Job::find($id);
+Route::get('/jobs/{job}/edit', function (Job $job) {
 
     return view('jobs.edit', ['job' => $job]);
-
 });
 
 //UPDATE -Rota para salvar a edição de um job
 
-Route::patch('/jobs/{id}', function ($id){
-
-    //validade
-    request()->validate([
-    'title' => ['required', 'min:3'],
-    'salary' => ['required']
-   ]);
+Route::patch('/jobs/{job}', function (Job $job) {
 
     //authorize
 
-    //update
-    $job = Job::findOrFail($id);
+    //validade
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
 
+    //update
     $job->update([
-        'title'=> request('title'),
-        'salary'=> request('salary'),
+        'title' => request('title'),
+        'salary' => request('salary'),
     ]);
 
     //redirect to the job page
     return redirect('/jobs/' . $job->id);
-
 });
 
 //DESTROY -Rota para apagar um job
 
-Route::delete('/jobs/{id}', function ($id){
+Route::delete('/jobs/{job}', function (Job $job) {
     //authorize
 
     //delete the job
-    $job = Job::findOrFail($id);
     $job->delete();
 
     //redirect
@@ -108,4 +97,3 @@ Route::delete('/jobs/{id}', function ($id){
 Route::get('/contact', function () {
     return view('contact');
 });
-
