@@ -25,7 +25,7 @@ Route::get('/jobs', 'index');
 Route::get('/jobs/create',  'create');
 
 
-//SHOW -Rota para mostrar um job
+//SHOW - Rota para mostrar um job
 
 Route::get('/jobs/{job}',  'show');
 
@@ -35,17 +35,17 @@ Route::get('/jobs/{job}',  'show');
 Route::post('/jobs', 'store');
 
 
-//EDIT -Rota para editar um job
+//EDIT - Rota para editar um job
 
 Route::get('/jobs/{job}/edit',  'edit');
 
 
-//UPDATE -Rota para salvar a edição de um job
+//UPDATE - Rota para salvar a edição de um job
 
 Route::patch('/jobs/{job}',  'update');
 
 
-//DESTROY -Rota para apagar um job
+//DESTROY - Rota para apagar um job
 
 Route::delete('/jobs/{job}',  'destroy');
 
