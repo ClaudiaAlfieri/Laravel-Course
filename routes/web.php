@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\JobController;
-use Illuminate\Support\Facades\Route;
 use App\Models\Job;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisterUserController;
 
 
 // Route::get('/', function () {
@@ -60,3 +61,8 @@ Route::delete('/jobs/{job}',  'destroy');
 // });
 
 Route::view('/contact', 'contact');
+
+
+//Auth -> routes com auth
+
+Route::get('/register', [RegisterUserController::class, 'create' ]);
