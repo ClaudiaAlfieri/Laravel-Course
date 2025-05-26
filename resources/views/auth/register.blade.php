@@ -2,7 +2,7 @@
     <x-slot:heading>
         Register
     </x-slot:heading>
-    <form method="POST" action="/jobs">
+    <form method="POST" action="/register">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -11,7 +11,7 @@
                     <x-form-field>
                         <x-form-label for='first_name'>First Name</x-form-label>
                         <div class="mt-2">
-                            <x-form-input name="first_name" id="first_name" required/>
+                            <x-form-input name="first_name" id="first_name"  required />
 
                             <x-form-error name='first_name' />
                         </div>
