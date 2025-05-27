@@ -14,7 +14,21 @@ class SessionController extends Controller
 
     public function store()
     {
-         dd(request()->all());
+
+        //validade
+        $attributes = request()->validate([
+            'email'=> ['required'],
+            'password' => ['required']
+        ]);
+
+        // attempt to login the user
+        Auth::attempt($attributes);
+
+        //regenerate the session button
+        request()->session()->regenerate();
+
+        //redirect
+        return redirect('/jobs');
     }
 
     public function destroy()
