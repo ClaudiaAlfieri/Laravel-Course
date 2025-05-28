@@ -26,26 +26,21 @@ Route::get('/jobs', 'index');
 
 Route::get('/jobs/create',  'create');
 
-
 //SHOW - Rota para mostrar um job
 
 Route::get('/jobs/{job}',  'show');
-
 
 //STORE - Rota para guardar um novo job na DB
 
 Route::post('/jobs', 'store');
 
-
 //EDIT - Rota para editar um job
 
 Route::get('/jobs/{job}/edit',  'edit');
 
-
 //UPDATE - Rota para salvar a edição de um job
 
 Route::patch('/jobs/{job}',  'update');
-
 
 //DESTROY - Rota para apagar um job
 
@@ -62,7 +57,6 @@ Route::delete('/jobs/{job}',  'destroy');
 // });
 
 Route::view('/contact', 'contact');
-
 
 //Auth -> routes com auth
 
