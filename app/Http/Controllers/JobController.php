@@ -56,6 +56,7 @@ class JobController extends Controller
     {
 
         //authorize
+        Gate::authorize('edit-job', $job);
 
         //validade
         request()->validate([
@@ -76,6 +77,7 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         //authorize
+          Gate::authorize('edit-job', $job);
 
         //delete the job
         $job->delete();
