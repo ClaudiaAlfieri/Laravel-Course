@@ -38,19 +38,19 @@ Route::post('/jobs', 'store')->middleware('auth');
 
 Route::get('/jobs/{job}/edit',  'edit')
 ->middleware('auth')
--> can('edit-job','job');
+-> can('edit','job');
 
 //UPDATE - Rota para salvar a edição de um job
 
 Route::patch('/jobs/{job}',  'update')
 ->middleware('auth')
--> can('edit-job','job');;
+-> can('edit','job');;
 
 //DESTROY - Rota para apagar um job
 
 Route::delete('/jobs/{job}',  'destroy')
 ->middleware('auth')
--> can('edit-job','job');;
+-> can('edit','job');;
 
 });
 
