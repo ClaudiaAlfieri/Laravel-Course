@@ -6,6 +6,19 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterUserController;
 
+// Rota para receber email:
+// Route::get('test', function(){
+//     return new \App\Mail\JobPosted();
+// });
+
+// Rota para enviar email:
+// Route::get('test', function(){
+//    Illuminate\Support\Facades\Mail::to('example@example.com')->send(
+//     new \App\Mail\JobPosted()
+//    );
+//    return 'Done';
+// });
+
 
 // Route::get('/', function () {
 //     return view('home');
@@ -61,8 +74,6 @@ Route::delete('/jobs/{job}',  'destroy')
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
-
-
 
 // Rota que substitui todas as rotas do grupo que usam o JobController
 // Route::resource('/contact', JobController::class)->middleware('auth');
