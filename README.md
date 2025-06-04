@@ -72,6 +72,7 @@ php artisan migrate
 
 # 6. Start the server
 php artisan serve
+```
 
 ---
 
@@ -79,7 +80,8 @@ php artisan serve
 
 This project was developed by Claudia Alfieri for educational purposes.
 
+---
+
 ## 📝 Contribution 🤝
 
 Contributions are welcome through pull requests.
-
