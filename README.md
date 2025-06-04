@@ -83,4 +83,3 @@ This project was developed by Claudia Alfieri for educational purposes.
 
 Contributions are welcome through pull requests.
 
-
